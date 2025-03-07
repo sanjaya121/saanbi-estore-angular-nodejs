@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UUID } from "uuidjs";
+import { User } from '../../../model/user';
+import { AuthService } from '../../../services/auth/auth.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -15,8 +19,18 @@ export class SignUpComponent implements OnInit {
    */
 
   singUpForm: FormGroup // form initialization.
-  formData = {};
-  constructor() {
+  // formData = {};
+  userData: User = {
+    id: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    password: ''
+  };
+  id:any="";
+
+
+  constructor(private authService:AuthService) {
 
     this.singUpForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -27,13 +41,25 @@ export class SignUpComponent implements OnInit {
 
     })
     this.singUpForm.valueChanges.subscribe(values => {
-      this.formData = values;
-      console.log("form Data", this.singUpForm);
+      // this.formData = values;
+      // console.log("form Data", this.singUpForm);
+      this.userData={
+        id:this.id,
+        email:values.email,
+        firstName:values.firstName,
+        lastName:values.lastName,
+        password:values.password
+      }
     })
+   
   }
 
   ngOnInit(): void {
     console.log("ngOnInit", this.singUpForm);
+    this.id=UUID.genV6().hexString
+    console.log("uuiddddd",this.id);
+    
+   
   }
   get email() {
     return this.singUpForm.controls['email'];
@@ -49,5 +75,13 @@ export class SignUpComponent implements OnInit {
   }
   get confirmPassword() {
     return this.singUpForm.controls['confirmPassword'];
+  }
+
+  singUp=(userData:User)=>{
+    
+    console.log(userData,"userData");
+    this.authService.signUpUser(userData).subscribe(user=>{
+      console.log(user)
+    });
   }
 }

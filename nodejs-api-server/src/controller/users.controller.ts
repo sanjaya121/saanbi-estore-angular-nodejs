@@ -7,7 +7,6 @@ import { Status } from '../enum/status.enum';
 import { PRODUCTS_QUERY } from "../query/products.query";
 import bcrypt from "bcryptjs";
 import { USERS_QUERY } from '../query/users.query'
-import e from "cors";
 
 type ResultSet = [RowDataPacket[] | RowDataPacket[][] | OkPacket | OkPacket[] | ResultSetHeader, FieldPacket[]|{}];
 
