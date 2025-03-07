@@ -21,7 +21,7 @@ export const getUsers = async (req: Request, res: Response): Promise<Response<Ht
     const pool = await connection();
     const result: ResultSet = await pool.query(USERS_QUERY.SELECT_USERS);
     return res.status(Code.OK)
-      .send(new HttpResponse(Code.OK, Status.OK, 'Users  retrieved', result[0].data));
+      .send(new HttpResponse(Code.OK, Status.OK, 'Users  retrieved', result[0]));
   } catch (error: unknown) {
     console.error(error);
     return res.status(Code.INTERNAL_SERVER_ERROR)
@@ -64,3 +64,8 @@ export const creatUsers = async (req: Request, res: Response): Promise<Response<
       .send(new HttpResponse(Code.INTERNAL_SERVER_ERROR, Status.INTERNAL_SERVER_ERROR, 'An error occurred'));
   }
 };
+
+export const userLogin = async (req:Request,res:Response): Promise<Response<HttpResponse>>=>{
+  return res.status(Code.OK).send(new HttpResponse(Code.OK,Status.OK,"Logged in"))
+ 
+}

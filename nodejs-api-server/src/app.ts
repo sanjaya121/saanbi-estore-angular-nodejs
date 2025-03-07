@@ -7,6 +7,7 @@ import { Status } from "./enum/status.enum";
 import categoriesRoutes from "./routes/categories.routes";
 import productsRoutes from "./routes/products.routes";
 import usersRoutes from "./routes/users.routes";
+import loginRoutes from "./routes/login.routes";
 // import patientRoutes from "./routes/patient.routes";
 
 export class App {
@@ -40,6 +41,7 @@ export class App {
     this.app.use("/categories", categoriesRoutes);
     this.app.use('/products', productsRoutes);
     this.app.use('/signup', usersRoutes);
+    this.app.use('/api/v1/login',loginRoutes)
     this.app.get("/", (req, res) =>
       res
         .status(Code.OK)
