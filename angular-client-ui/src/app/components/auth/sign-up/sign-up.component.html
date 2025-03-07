@@ -1,39 +1,87 @@
-<div class="signup-page container ">
-    <div class="singup-form my-5 d-flex flex-column">
-        
-      
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-lg-6">
-                    <h1>Sign Up</h1>
-                    <form [formGroup]="singUpForm">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">First Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Last Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                      </div>
-                   
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-                <div class="col"></div>
-            </div>
-           
+<div class="signup-page container">
+  <div class="singup-form my-5 d-flex flex-column">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-lg-6">
+        <h1>Sign Up</h1>
+        <form [formGroup]="singUpForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              formControlName="email"
+              aria-describedby="emailHelp"
+            />
+            @if(email.invalid && email.touched){
+                <span class="text-danger">Please Enter Email</span>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >First Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              formControlName="firstName"
+              aria-describedby="emailHelp"
+            />
+            @if(firstName.invalid && firstName.touched){
+                <span class="text-danger">Please Enter your first name</span>
+            }
          
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              formControlName="lastName"
+              aria-describedby="emailHelp"
+            />
+            @if(lastName.invalid && lastName.touched){
+                <span class="text-danger">Please enter your last name</span>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              id="exampleInputPassword1"
+            />
+            @if(password.invalid && password.touched){
+                <span class="text-danger">Please enter your passwrod</span>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              formControlName="confirmPassword"
+              id="exampleInputPassword1"
+            />
+            @if(confirmPassword.invalid && confirmPassword.touched){
+                <span class="text-danger">Please confirm your password</span>
+            }
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col"></div>
     </div>
-   
+  </div>
 </div>
