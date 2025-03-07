@@ -1,39 +1,42 @@
 import { Routes } from '@angular/router';
-import { ProductDetailsComponent } from './components/routes/products/product-details/product-details.component';
-import { ShoppigCartComponent } from './components/routes/shoppig-cart/shoppig-cart.component';
-import { JSPracticeComponent } from './components/routes/jspractice/jspractice.component';
-import { CodilityComponent } from './components/routes/codility/codility.component';
-import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { AuthComponent } from './authentication/auth.component';
+import { HomeComponent } from './home/home.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+
 
 export const routes: Routes = [
+
     {
-        path: "",
-        loadChildren: () => import('./home/home.module').then(module => module.HomeModule)
+        path: "home",
+        component:HomeComponent,
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+
     },
     {
-        path: "products/:id",
-        component: ProductDetailsComponent,
-        title: "Product Details"
-    },
-    {
-        path: "shopping-cart",
-        component: ShoppigCartComponent,
-        title: "Shpping Cart"
-    },
-    {
-        path: "account/signup",
-        component: SignUpComponent,
-        title: "Shpping Cart"
-    },
-    {
-        path: "js-challenge",
-        component: JSPracticeComponent,
-        title: "JS Challenge"
-    },
-    {
-        path: "codility-challenge",
-        component: CodilityComponent,
-        title: "JS Challenge"
+        path: "auth",
+        component:AuthComponent,
+        loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+
     }
+    // {
+    //     path: "products/:id",
+    //     component: ProductDetailsComponent,
+    //     title: "Product Details"
+    // },
+    // {
+    //     path: "shopping-cart",
+    //     component: ShoppigCartComponent,
+    //     title: "Shpping Cart"
+    // },
+    // {
+    //     path: "js-challenge",
+    //     component: JSPracticeComponent,
+    //     title: "JS Challenge"
+    // },
+    // {
+    //     path: "codility-challenge",
+    //     component: CodilityComponent,
+    //     title: "JS Challenge"
+    // }
 
 ];

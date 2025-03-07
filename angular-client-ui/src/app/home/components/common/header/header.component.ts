@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SharedService } from '../../../services/shared/shared.service';
+import { SharedService } from '../../../../services/shared/shared.service';
 import { FormsModule } from '@angular/forms';
 import { AccountHeaderComponent } from "./account-header/account-header.component";
 import { RouterModule } from '@angular/router';

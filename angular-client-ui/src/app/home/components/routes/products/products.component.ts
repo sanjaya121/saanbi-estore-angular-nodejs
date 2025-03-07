@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Products } from '../../../model/products.model';
-import { ProductService } from '../../../services/products.service';
+import { Products } from '../../../../model/products.model';
+import { ProductService } from '../../../../services/products.service';
 import { FormsModule } from '@angular/forms';
-import { SharedService } from '../../../services/shared/shared.service';
-import { CartService } from '../../../services/cart/cart.service';
-import { CartItem } from '../../../model/cart.model';
+import { SharedService } from '../../../../services/shared/shared.service';
+import { CartService } from '../../../../services/cart/cart.service';
+import { CartItem } from '../../../../model/cart.model';
 @Component({
   selector: 'app-products',
   standalone: true,

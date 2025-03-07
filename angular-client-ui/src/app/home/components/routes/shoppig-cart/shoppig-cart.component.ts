@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../../services/cart/cart.service';
-import { CartItem } from '../../../model/cart.model';
+import { CartService } from '../../../../services/cart/cart.service';
+import { CartItem } from '../../../../model/cart.model';
 
 @Component({
   selector: 'app-shoppig-cart',

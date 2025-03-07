@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
 
 
-import { ProductsComponent } from "../components/routes/products/products.component";
+import { ProductsComponent } from "./components/routes/products/products.component";
 @Component({
   selector: 'app-home',
   standalone: true,

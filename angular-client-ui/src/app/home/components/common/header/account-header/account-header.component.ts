@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedService } from '../../../../services/shared/shared.service';
-import { CartService } from '../../../../services/cart/cart.service';
+import { SharedService } from '../../../../../services/shared/shared.service';
+import { CartService } from '../../../../../services/cart/cart.service';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
