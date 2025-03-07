@@ -1,0 +1,4 @@
+angular-client-ui/node_modules/
+
+nodejs-api-server/node_modules/
+nodejs-api-server/package-lock.json
