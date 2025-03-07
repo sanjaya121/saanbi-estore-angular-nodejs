@@ -12,4 +12,8 @@ export class AuthService {
   signUpUser=(userData:User)=>{
     return this.http.post('http://localhost:8080/signup',userData)
   }
+
+  getUsers=()=>{
+    return this.http.get('http://localhost:8080/signup');
+  }
 }

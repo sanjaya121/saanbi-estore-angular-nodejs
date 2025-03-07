@@ -28,6 +28,7 @@ export class SignUpComponent implements OnInit {
     password: ''
   };
   id:any="";
+  enableButton:boolean=false;
 
 
   constructor(private authService:AuthService) {
@@ -50,6 +51,8 @@ export class SignUpComponent implements OnInit {
         lastName:values.lastName,
         password:values.password
       }
+      console.log("isValid",this.singUpForm.valid);
+      this.enableButton =this.singUpForm.valid;
     })
    
   }
@@ -58,6 +61,7 @@ export class SignUpComponent implements OnInit {
     console.log("ngOnInit", this.singUpForm);
     this.id=UUID.genV6().hexString
     console.log("uuiddddd",this.id);
+    this.getUsers();
     
    
   }
@@ -77,11 +81,21 @@ export class SignUpComponent implements OnInit {
     return this.singUpForm.controls['confirmPassword'];
   }
 
+  signUpMessage="";
+
   singUp=(userData:User)=>{
     
     console.log(userData,"userData");
-    this.authService.signUpUser(userData).subscribe(user=>{
-      console.log(user)
+    this.authService.signUpUser(userData).subscribe((response:any)=>{
+      console.log(response)
+        this.signUpMessage=response.message;
+    });
+  }
+
+  getUsers=()=>{
+    this.authService.getUsers().subscribe((response:any)=>{
+      console.log("Users",response.data)
+       
     });
   }
 }

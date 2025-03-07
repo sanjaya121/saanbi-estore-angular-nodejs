@@ -5,7 +5,7 @@ import { HttpResponse } from '../domain/response';
 import { Code } from '../enum/code.enum';
 import { Status } from '../enum/status.enum';
 import { PRODUCTS_QUERY } from "../query/products.query";
-import bcrypt from "bcryptjs";
+import bcrypt, { genSalt } from "bcryptjs";
 import { USERS_QUERY } from '../query/users.query'
 
 type ResultSet = [RowDataPacket[] | RowDataPacket[][] | OkPacket | OkPacket[] | ResultSetHeader, FieldPacket[]|{}];
@@ -21,7 +21,7 @@ export const getUsers = async (req: Request, res: Response): Promise<Response<Ht
     const pool = await connection();
     const result: ResultSet = await pool.query(USERS_QUERY.SELECT_USERS);
     return res.status(Code.OK)
-      .send(new HttpResponse(Code.OK, Status.OK, 'Users  retrieved', result[0]));
+      .send(new HttpResponse(Code.OK, Status.OK, 'Users  retrieved', result[0].data));
   } catch (error: unknown) {
     console.error(error);
     return res.status(Code.INTERNAL_SERVER_ERROR)
@@ -32,9 +32,15 @@ export const getUsers = async (req: Request, res: Response): Promise<Response<Ht
 
 export const creatUsers = async (req: Request, res: Response): Promise<Response<HttpResponse>> => {
   console.info(`[${new Date().toLocaleString()}] Incoming ${req.method}${req.originalUrl} Request from ${req.rawHeaders[0]} ${req.rawHeaders[1]}`);
-  let user = { ...req.body };
+  
   try {
-    let email = req.body.email;
+    const salt=await bcrypt.genSalt(10);
+   
+    let email=req.body.email;
+    let password=await bcrypt.hash(req.body.password,salt);
+    let user = { ...req.body,password:password };
+    
+    console.log("hasshed password",password,user);
     const pool = await connection();
     const email1:ResultSet = await pool.query(`select count(*) as count from users where email like '${email}'`);
     const email2 = email1[0] as RowDataPacket[];
@@ -43,13 +49,13 @@ export const creatUsers = async (req: Request, res: Response): Promise<Response<
     console.log
     if (uniqueEmail > 0) {
       // console.log(email1,"Email oneeeeeeee");
-      return res.status(Code.OK).send(new HttpResponse(Code.OK, Status.OK, "Email Already Exists"))
+      return res.status(Code.OK).send(new HttpResponse(Code.OK, Status.OK, "User Already Exists"))
     }
     else {
       const result: ResultSet = await pool.query(USERS_QUERY.CREATE_USERS, Object.values(user));
-      user = { id: (result[0] as ResultSetHeader).insertId, ...req.body };
+      // user = { id: (result[0] as ResultSetHeader).insertId, ...req.body };
       return res.status(Code.CREATED)
-        .send(new HttpResponse(Code.CREATED, Status.CREATED, 'User Created', user));
+        .send(new HttpResponse(Code.CREATED, Status.CREATED, 'User Created', user.data));
     }
 
   } catch (error: unknown) {
