@@ -3,31 +3,37 @@ import { ProductDetailsComponent } from './components/routes/products/product-de
 import { ShoppigCartComponent } from './components/routes/shoppig-cart/shoppig-cart.component';
 import { JSPracticeComponent } from './components/routes/jspractice/jspractice.component';
 import { CodilityComponent } from './components/routes/codility/codility.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 
 export const routes: Routes = [
     {
-        path:"",
-        loadChildren:()=>import('./home/home.module').then(module=>module.HomeModule)
+        path: "",
+        loadChildren: () => import('./home/home.module').then(module => module.HomeModule)
     },
     {
-        path:"products/:id",
-        component:ProductDetailsComponent,
-        title:"Product Details"
+        path: "products/:id",
+        component: ProductDetailsComponent,
+        title: "Product Details"
     },
     {
-        path:"shopping-cart",
-        component:ShoppigCartComponent,
-        title:"Shpping Cart"
+        path: "shopping-cart",
+        component: ShoppigCartComponent,
+        title: "Shpping Cart"
     },
     {
-        path:"js-challenge",
-        component:JSPracticeComponent,
-        title:"JS Challenge"
+        path: "account/signup",
+        component: SignUpComponent,
+        title: "Shpping Cart"
     },
     {
-        path:"codility-challenge",
-        component:CodilityComponent,
-        title:"JS Challenge"
+        path: "js-challenge",
+        component: JSPracticeComponent,
+        title: "JS Challenge"
+    },
+    {
+        path: "codility-challenge",
+        component: CodilityComponent,
+        title: "JS Challenge"
     }
 
 ];
