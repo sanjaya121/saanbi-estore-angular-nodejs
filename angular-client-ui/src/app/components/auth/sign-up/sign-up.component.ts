@@ -60,10 +60,6 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     console.log("ngOnInit", this.singUpForm);
     this.id=UUID.genV6().hexString
-    console.log("uuiddddd",this.id);
-    this.getUsers();
-    
-   
   }
   get email() {
     return this.singUpForm.controls['email'];
@@ -97,5 +93,11 @@ export class SignUpComponent implements OnInit {
       console.log("Users",response.data)
        
     });
+  }
+
+  login=()=>{
+    this.authService.login("test").subscribe(login=>{
+      console.log("Login")
+    })
   }
 }

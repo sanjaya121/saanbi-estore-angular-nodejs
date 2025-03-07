@@ -64,8 +64,11 @@ export const creatUsers = async (req: Request, res: Response): Promise<Response<
       .send(new HttpResponse(Code.INTERNAL_SERVER_ERROR, Status.INTERNAL_SERVER_ERROR, 'An error occurred'));
   }
 };
-
+export const login = async (req:Request,res:Response): Promise<Response<HttpResponse>>=>{
+  return res.status(Code.OK).send(new HttpResponse(Code.OK,Status.OK,"loing get api"))
+ 
+}
 export const userLogin = async (req:Request,res:Response): Promise<Response<HttpResponse>>=>{
-  return res.status(Code.OK).send(new HttpResponse(Code.OK,Status.OK,"Logged in"))
+  return res.status(Code.OK).send(new HttpResponse(Code.OK,Status.OK,"Logged in ssss"))
  
 }

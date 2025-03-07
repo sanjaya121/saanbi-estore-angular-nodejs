@@ -14,6 +14,9 @@ export class AuthService {
   }
 
   getUsers=()=>{
-    return this.http.get('http://localhost:8080/signup');
+    return this.http.get('http://localhost:8080/api/v1/login');
+  }
+  login=(login:any)=>{
+    return this.http.post('http://localhost:8080/api/v1/login',login);
   }
 }

@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getUsers,creatUsers, userLogin} from "../controller/users.controller";
+import {login,userLogin} from "../controller/auth.controller";
 
 const loginRoutes =Router();
 
 loginRoutes.route('/')
-.get(userLogin)
+.get(login)
 .post(userLogin)
 
 
