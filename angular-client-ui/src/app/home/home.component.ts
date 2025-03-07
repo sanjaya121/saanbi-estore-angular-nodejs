@@ -3,10 +3,11 @@ import { HomeService } from '../services/home.service';
 
 
 import { ProductsComponent } from "./components/routes/products/products.component";
+import { HeaderComponent } from "./components/common/header/header.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductsComponent],
+  imports: [ProductsComponent, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

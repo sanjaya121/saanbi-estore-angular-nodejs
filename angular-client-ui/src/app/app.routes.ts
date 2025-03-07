@@ -7,7 +7,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 export const routes: Routes = [
 
     {
-        path: "home",
+        path: "",
         component:HomeComponent,
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
 
