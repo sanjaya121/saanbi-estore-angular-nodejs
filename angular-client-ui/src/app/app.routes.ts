@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './authentication/auth.component';
 import { HomeComponent } from './home/home.component';
-import { authGaurdGuard } from './auth-gaurds/auth-gaurd.guard';
+import { authGaurd} from './auth-gaurds/auth-gaurd.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -22,7 +22,7 @@ export const routes: Routes = [
         path: "dashboard",
         component:DashboardComponent,
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        canActivate:[authGaurdGuard]
+        canActivate:[authGaurd]
     },
     // {
     //     path: "products/:id",

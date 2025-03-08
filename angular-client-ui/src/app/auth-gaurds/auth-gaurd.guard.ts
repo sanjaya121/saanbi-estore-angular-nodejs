@@ -2,7 +2,7 @@ import { inject, ɵgetInjectableDef } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 
-export const authGaurdGuard: CanActivateFn = (route, state) => {
+export const authGaurd: CanActivateFn = (route, state) => {
 
 
   const authService=inject(AuthService);
@@ -15,5 +15,5 @@ export const authGaurdGuard: CanActivateFn = (route, state) => {
     router.navigate(['/auth']);
     return true;
   }
-  return true;
+  
 };
