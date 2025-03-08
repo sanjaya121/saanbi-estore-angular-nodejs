@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './authentication/auth.component';
 import { HomeComponent } from './home/home.component';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { authGaurdGuard } from './auth-gaurds/auth-gaurd.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 export const routes: Routes = [
@@ -15,9 +16,14 @@ export const routes: Routes = [
     {
         path: "auth",
         component:AuthComponent,
-        loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
-
-    }
+        loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
+    },
+    {
+        path: "dashboard",
+        component:DashboardComponent,
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+        canActivate:[authGaurdGuard]
+    },
     // {
     //     path: "products/:id",
     //     component: ProductDetailsComponent,
