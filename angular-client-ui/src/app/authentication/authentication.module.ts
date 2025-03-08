@@ -17,6 +17,6 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
     SignUpComponent
     // [RouterModule.forChild(routes)]
   ],
-  // exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AuthenticationModule { }

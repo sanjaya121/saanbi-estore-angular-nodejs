@@ -20,6 +20,13 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
+  get userName(){
+   return this.loginForm.controls['userName']
+  }
+
+  get password(){
+    return this.loginForm.controls['password']
+   }
 
   ngOnInit(): void {
 

@@ -1,14 +1,39 @@
-<div class="login-content">
-
-
-    <form [formGroup]="loginForm">
+<div class="login-content my-5">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-lg-4">
+      <h1>Login</h1>
+      <form [formGroup]="loginForm">
         <div class="mb-3">
-            <label for="userId" class="form-label">User Name</label>
-            <input type="email" clas="form-control" id="userId" formControlName="userName"/>
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            formControlName="userName"
+            aria-describedby="emailHelp"
+          />
+          @if(userName.invalid && userName.touched){
+          <span class="text-danger">Please Enter Email</span>
+          }
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="email" clas="form-control" id="password" formControlName="userName"/>
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="email"
+            class="form-control"
+            id="paswo"
+            formControlName="password"
+          />
+          @if(password.invalid && password.touched){
+            <span class="text-danger">Please Enter Email</span>
+            }
         </div>
-    </form>
+        <button class="btn btn-lg btn-success" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
 </div>

@@ -7,6 +7,8 @@ import { CodilityComponent } from './home/components/routes/codility/codility.co
 import { JSPracticeComponent } from './home/components/routes/jspractice/jspractice.component';
 import { ProductDetailsComponent } from './home/components/routes/products/product-details/product-details.component';
 import { ShoppigCartComponent } from './home/components/routes/shoppig-cart/shoppig-cart.component';
+import { SignUpComponent } from './authentication/auth/sign-up/sign-up.component';
+import { LoginComponent } from './authentication/auth/login/login.component';
 
 
 export const routes: Routes = [
@@ -52,6 +54,16 @@ export const routes: Routes = [
     {
         path: "codility-challenge",
         component: CodilityComponent,
+        title: "JS Challenge"
+    },
+    {
+        path: "singup",
+        component: SignUpComponent,
+        title: "JS Challenge"
+    },
+    {
+        path: "login",
+        component: LoginComponent,
         title: "JS Challenge"
     }
 
