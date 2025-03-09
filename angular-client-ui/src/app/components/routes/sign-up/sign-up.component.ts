@@ -61,7 +61,7 @@ export class SignUpComponent implements OnInit {
     console.log("ngOnInit", this.singUpForm);
     this.id=UUID.genV6().hexString
     console.log("uuiddddd",this.id);
-    this.getUsers();
+  
     
    
   }
@@ -92,10 +92,4 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  getUsers=()=>{
-    this.authService.getUsers().subscribe((response:any)=>{
-      console.log("Users",response.data)
-       
-    });
-  }
 }
