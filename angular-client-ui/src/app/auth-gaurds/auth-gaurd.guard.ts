@@ -12,7 +12,7 @@ export const authGaurd: CanActivateFn = (route, state) => {
     return true;
   }
   else{
-    router.navigate(['/auth/login']);
+    router.navigate(['/login']);
     return true;
   }
   
