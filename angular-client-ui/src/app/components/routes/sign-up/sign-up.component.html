@@ -76,6 +76,9 @@
             @if(confirmPassword.invalid && confirmPassword.touched){
             <span class="text-danger">Please confirm your password</span>
             }
+            @if(confirmPassword.errors && confirmPassword.errors['PasswordNoMatch']){
+              <span class="text-danger">Please confirm your password</span>
+              }
           </div>
 
           <button

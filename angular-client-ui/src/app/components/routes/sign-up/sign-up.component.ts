@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UUID } from "uuidjs";
 import { AuthService } from '../../../shared-services/auth/auth.service';
+import { confirmPasswordValidator } from './confirm-password.validator';
 
 
 
@@ -40,7 +41,7 @@ export class SignUpComponent implements OnInit {
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required)
 
-    })
+    }, { validators:confirmPasswordValidator })
     this.singUpForm.valueChanges.subscribe(values => {
       // this.formData = values;
       // console.log("form Data", this.singUpForm);
@@ -51,8 +52,9 @@ export class SignUpComponent implements OnInit {
         lastName:values.lastName,
         password:values.password
       }
-      console.log("isValid",this.singUpForm.valid);
+   
       this.enableButton =this.singUpForm.valid;
+      // console.log("password do not match",confirmPasswordValidator())
     })
    
   }
