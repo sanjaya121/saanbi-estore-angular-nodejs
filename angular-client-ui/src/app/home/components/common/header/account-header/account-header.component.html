@@ -21,9 +21,19 @@
       </div>
       <div class="fav-icon d-flex align-items-center mx-5">
         <a routerLink="/dashboard" class="nav-link">
-          <span  class="material-symbols-outlined">
-            account_circle
-          </span></a
+          <div class="dropdown">
+            <div class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span  class="material-symbols-outlined">
+                account_circle
+              </span>
+            </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+          </a
         >
       </div>
     </div>

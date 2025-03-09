@@ -1,12 +1,10 @@
-<div class="products my-5">
+<div class="products my-5 d-flex align-items-center">
 @if(isloading){
     <mat-spinner></mat-spinner>
 }
 @else{
    <div class="products-list container">
-       
         <div class="row">
-      
             @for(product of searchProducts(searchText);track product.id){
                 <div class="col-lg-3 my-5">
                     <div class="card">
@@ -17,12 +15,10 @@
                             <button class="btn btn-secondary" (click)="addToCart(product,1)">Add To Cart</button>
                         </div>
                     </div>
-                   
                 </div>
             }
         </div>
         <button class="btn btn-success" (click)="loadMore(12);">Load More</button>
    </div>
 }
-
 </div>

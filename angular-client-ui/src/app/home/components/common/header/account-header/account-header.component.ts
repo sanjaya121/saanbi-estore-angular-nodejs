@@ -6,6 +6,7 @@ import { CartService } from '../../../../../services/cart/cart.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
+import { AuthService } from '../../../../../services/auth/auth.service';
 @Component({
   selector: 'app-account-header',
   standalone: true,
@@ -15,7 +16,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 })
 export class AccountHeaderComponent implements OnInit {
 
-  constructor(private cartService: CartService) {  }
+  constructor(private cartService: CartService,public authService :AuthService) {  }
 
   totalQuantity = 0;
   ngOnInit(): void {
