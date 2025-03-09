@@ -4,15 +4,15 @@
     <form [formGroup]="loginForm">
       <div class="mb-3">
         <label for="email">Email</label>
-        <input type="text" formControlName="email" class="form-control" />
+        <input type="text" formControlName="email" class="form-control" id="email" />
         @if(email?.invalid && email?.touched){
         <small class="text-danger"> Email is required </small>
 
         }
       </div>
       <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="text" formControlName="password" class="form-control" />
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" id="password"/>
         @if(password?.invalid && password?.touched){
         <small class="text-danger"> Password is required </small>
         }
