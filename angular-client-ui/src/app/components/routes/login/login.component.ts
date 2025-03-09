@@ -33,12 +33,10 @@ export class LoginComponent {
   }
 
   login() {
-
-   
-     this.auth.login(this.loginForm.value)
-   
-    console.log(this.loginForm.value);
-
-
+    const user =  this.auth.login(this.loginForm.value);
+    user.add();
+    console.log(user,"loggedin user")
   }
+
+
 }

@@ -17,37 +17,34 @@ export const login = async (req: Request, res: Response): Promise<Response<HttpR
   return res.status(Code.OK).send(new HttpResponse(Code.OK, Status.OK, "loing get api"))
 
 }
-export const userLogin = async (req:any, res:any) => {
+export const userLogin = async (req: any, res: any) => {
 
-    const {email,password} = req.body;
-    const SECRET_KEY = process.env.JWT_SECRET_KEY as string;
-    // const pool = await connection();
-    db.query("select * from users where email= ?",[email],async(error:any,result:any)=>{
-      if(error){
-        return res.status(500).send({message : "error occured"});
-      }
-      if(result.length ===0){
-        return res.status(401).send({message : "Invalid email or password"});
-      }
-      const user = result[0];
-      const isMatch = await bcrypt.compare(password,user.password);
-      if(!isMatch){
-        return res.status(401).send({message : "Invalid email or password"});
-      }
-
-      const token = jwt.sign({id:user.id},SECRET_KEY,{expiresIn:"1h"})
-      res.send({
-        message:"Login Success",token
-      })
+  const { email, password } = req.body;
+  const SECRET_KEY = process.env.JWT_SECRET_KEY as string;
+  // const pool = await connection();
+  db.query("select * from users where email= ?", [email], async (error: Error, result: any) => {
+    if (error) {
+      return res.status(500).send({ message: "error occured" });
+    }
+    if (result.length === 0) {
+      return res.status(401).send({ message: "Invalid email or password" });
+    }
+    const user = result[0];
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).send({ message: "Invalid email or password" });
+    }
+    const expirationTime=1;
+    const token = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: `${expirationTime}` })
+    const loggedinUser ={
+      firstName:result[0].firstName,
+      lastName:result[0].lastName
+    }
+    res.send({
+      message: "Login Success", token,
+      user:loggedinUser
+     
     })
+  })
 
-
-    // if(!email || !password){
-    //   return res.status(Code.OK).send(new HttpResponse(Code.OK, Status.OK, "loing get api"))
-    // }
-    // else{
-    //   return res.status(Code.OK).send(new HttpResponse(Code.OK, Status.OK, "user name password present in request body"))
-    // }
-    
- 
 }

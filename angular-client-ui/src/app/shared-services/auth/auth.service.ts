@@ -21,9 +21,7 @@ export class AuthService {
 
 
 
-  getToken = () => {
-    return localStorage.getItem('token');
-  }
+
   signUpUser = (userData: any) => {
     return this.http.post('http://localhost:8080/signup', userData)
   }
@@ -35,6 +33,10 @@ export class AuthService {
       this.router.navigate(['/dashboard'])
 
     });
+  }
+
+  logOut=()=>{
+    localStorage.removeItem('token');
   }
 
 }
