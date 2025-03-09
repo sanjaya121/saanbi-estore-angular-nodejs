@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UUID } from "uuidjs";
-import { User } from '../../../model/user';
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '../../../shared-services/auth/auth.service';
+
 
 
 @Component({
@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
 
   singUpForm: FormGroup // form initialization.
   // formData = {};
-  userData: User = {
+  userData = {
     id: '',
     email: '',
     firstName: '',
@@ -83,7 +83,7 @@ export class SignUpComponent implements OnInit {
 
   signUpMessage="";
 
-  singUp=(userData:User)=>{
+  singUp=(userData:any)=>{
     
     console.log(userData,"userData");
     this.authService.signUpUser(userData).subscribe((response:any)=>{

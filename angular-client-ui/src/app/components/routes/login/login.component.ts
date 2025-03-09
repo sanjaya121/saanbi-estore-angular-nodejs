@@ -35,9 +35,7 @@ export class LoginComponent {
   login() {
 
    
-     this.auth.login(this.loginForm.value).subscribe((res) => {
-       console.log(res);
-     });
+     this.auth.login(this.loginForm.value)
    
     console.log(this.loginForm.value);
 

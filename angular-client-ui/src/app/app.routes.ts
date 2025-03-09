@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { authGaurd } from './auth-gaurds/auth-gaurd.guard';
 import { LoginComponent } from './components/routes/login/login.component';
+import { SignUpComponent } from './components/routes/sign-up/sign-up.component';
 
 
 
@@ -22,7 +23,12 @@ export const routes: Routes = [
     },
     {
         path:'login',
-        component:LoginComponent
+        component:LoginComponent,
+        
+    },
+    {
+        path:'signup',
+        component:SignUpComponent
     }
 
    

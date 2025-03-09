@@ -5,15 +5,23 @@ import { AuthService } from '../shared-services/auth/auth.service';
 export const authGaurd: CanActivateFn = (route, state) => {
 
 
-  const authService=inject(AuthService);
-  const router =inject(Router);
+  const authService = inject(AuthService);
+  const router = inject(Router);
+  const isLoggedIn = authService.isAuthenticated;
+  let xyz;
+  isLoggedIn.subscribe(loggedin => {
+    xyz = loggedin;
+  })
+  console.log("isLogged in ", xyz)
 
-  if(authService.isLoggedIn()){
-    return true;
+  // return authService.isAuthenticated ? true : false;
+  if (!xyz) {
+    router.navigate(['/login'])
+    return false
+
   }
-  else{
-    router.navigate(['/login']);
-    return true;
-  }
-  
+  return true;
+
+
+
 };
